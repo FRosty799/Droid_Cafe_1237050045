@@ -6,13 +6,25 @@ import android.widget.RadioButton
 import android.widget.Toast
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 
 class OrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
+
+        // Find the confirm button from the layout
+        val confirmButton: Button = findViewById(R.id.confirm_button)
+
+        // Set a click listener
+        confirmButton.setOnClickListener {
+            // Create an Intent to launch OrderConfirmationActivity
+            val intent = Intent(this, OrderConfirmationActivity::class.java)
+            startActivity(intent)
+        }
 
         // --- Spinner Setup ---
         val spinner: Spinner = findViewById(R.id.city_spinner)
